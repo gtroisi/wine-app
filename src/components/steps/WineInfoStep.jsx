@@ -1,4 +1,9 @@
 import React from 'react';
+// Importa le immagini delle bottiglie con il percorso corretto
+import rossoBottle from '../../assets/rosso.png';
+import biancoBottle from '../../assets/bianco.png';
+import rosatoBottle from '../../assets/rosato.png';
+import spumanteBottle from '../../assets/spumante.png';
 
 // Componente per il primo step: informazioni di base sul vino
 const WineInfoStep = ({ wineInfo, updateTastingData }) => {
@@ -66,38 +71,30 @@ const WineInfoStep = ({ wineInfo, updateTastingData }) => {
       <div className="form-group">
         <label>Tipologia</label>
         <div className="wine-type-options">
-          <button 
-            type="button"
-            className={`wine-type-button ${wineInfo.type === 'rosso' ? 'selected' : ''}`}
+          <img 
+            src={rossoBottle} 
+            alt="Vino Rosso" 
+            className={`wine-bottle-img ${wineInfo.type === 'rosso' ? 'selected' : ''}`}
             onClick={() => handleChange('type', 'rosso')}
-          >
-            <div className="wine-bottle rosso-bottle"></div>
-            <span>Rosso</span>
-          </button>
-          <button 
-            type="button"
-            className={`wine-type-button ${wineInfo.type === 'bianco' ? 'selected' : ''}`}
+          />
+          <img 
+            src={biancoBottle} 
+            alt="Vino Bianco" 
+            className={`wine-bottle-img ${wineInfo.type === 'bianco' ? 'selected' : ''}`}
             onClick={() => handleChange('type', 'bianco')}
-          >
-            <div className="wine-bottle bianco-bottle"></div>
-            <span>Bianco</span>
-          </button>
-          <button 
-            type="button"
-            className={`wine-type-button ${wineInfo.type === 'rosato' ? 'selected' : ''}`}
+          />
+          <img 
+            src={rosatoBottle} 
+            alt="Vino Rosato" 
+            className={`wine-bottle-img ${wineInfo.type === 'rosato' ? 'selected' : ''}`}
             onClick={() => handleChange('type', 'rosato')}
-          >
-            <div className="wine-bottle rosato-bottle"></div>
-            <span>Rosato</span>
-          </button>
-          <button 
-            type="button"
-            className={`wine-type-button ${wineInfo.type === 'spumante' ? 'selected' : ''}`}
+          />
+          <img 
+            src={spumanteBottle} 
+            alt="Vino Spumante" 
+            className={`wine-bottle-img ${wineInfo.type === 'spumante' ? 'selected' : ''}`}
             onClick={() => handleChange('type', 'spumante')}
-          >
-            <div className="wine-bottle spumante-bottle"></div>
-            <span>Spumante</span>
-          </button>
+          />
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import SliderInput from '../common/SliderInput';
+import { useEffect } from 'react';
 
 // Componente per la persistenza del vino
 const PersistenceStep = ({ persistence, updateTastingData }) => {
@@ -13,6 +14,17 @@ const PersistenceStep = ({ persistence, updateTastingData }) => {
     { value: 6, label: 'Più che persistente', score: 15 },
     { value: 7, label: 'Lungo', score: 16 }
   ];
+
+  useEffect(() => {
+    if (!persistence) {
+      const defaultOption = persistenceOptions.find(opt => opt.value === 1);
+      updateTastingData(null, 'persistence', {
+        value: defaultOption.value,
+        score: defaultOption.score,
+        label: defaultOption.label
+      });
+    }
+  }, [persistence]);
 
   // Valore corrente dello slider
   const currentValue = persistence ? persistence.value : 1;

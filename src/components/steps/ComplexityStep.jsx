@@ -1,5 +1,6 @@
 import React from 'react';
 import SliderInput from '../common/SliderInput';
+import { useEffect } from 'react';
 
 // Componente per la complessità del vino
 const ComplexityStep = ({ complexity, updateTastingData }) => {
@@ -12,6 +13,17 @@ const ComplexityStep = ({ complexity, updateTastingData }) => {
     { value: 5, label: 'Ampio', score: 16 }
   ];
 
+  useEffect(() => {
+    if (!complexity) {
+      const defaultOption = complexityOptions.find(opt => opt.value === 1);
+      updateTastingData(null, 'complexity', {
+        value: defaultOption.value,
+        score: defaultOption.score,
+        label: defaultOption.label
+      });
+    }
+  }, [complexity]);
+  
   // Valore corrente dello slider
   const currentValue = complexity ? complexity.value : 1;
   

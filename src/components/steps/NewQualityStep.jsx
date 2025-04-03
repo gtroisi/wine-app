@@ -1,5 +1,6 @@
 import React from 'react';
 import SliderInput from '../common/SliderInput';
+import { useEffect } from 'react';
 
 // Componente per la qualità del vino (nuova versione)
 const NewQualityStep = ({ quality, updateTastingData }) => {
@@ -13,6 +14,17 @@ const NewQualityStep = ({ quality, updateTastingData }) => {
     { value: 6, label: 'Più che fine', score: 23 },
     { value: 7, label: 'Eccellente', score: 24 }
   ];
+
+  useEffect(() => {
+    if (!quality) {
+      const defaultOption = qualityOptions.find(opt => opt.value === 1);
+      updateTastingData(null, 'quality', {
+        value: defaultOption.value,
+        score: defaultOption.score,
+        label: defaultOption.label
+      });
+    }
+  }, [quality]);
 
   // Valore corrente dello slider
   const currentValue = quality ? quality.value : 1;

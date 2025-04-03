@@ -1,5 +1,6 @@
 import React from 'react';
 import SliderInput from '../common/SliderInput';
+import { useEffect } from 'react';
 
 // Componente per l'equilibrio del vino
 const BalanceStep = ({ balance, updateTastingData }) => {
@@ -13,6 +14,17 @@ const BalanceStep = ({ balance, updateTastingData }) => {
     { value: 6, label: 'Bilanciato', score: 17 },
     { value: 7, label: 'Equilibrato', score: 18 }
   ];
+
+  useEffect(() => {
+    if (!balance) {
+      const defaultOption = balanceOptions.find(opt => opt.value === 1);
+      updateTastingData(null, 'balance', {
+        value: defaultOption.value,
+        score: defaultOption.score,
+        label: defaultOption.label
+      });
+    }
+  }, [balance]);
 
   // Valore corrente dello slider
   const currentValue = balance ? balance.value : 1;

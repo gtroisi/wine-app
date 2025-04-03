@@ -85,7 +85,7 @@ const SliderInput = ({ value, min, max, onChange, options, showLabels = true }) 
       
       {currentScore && (
         <div className="slider-score">
-          <span className="slider-score-label">Score:</span>
+          <span className="slider-score-label">Punteggio:</span>
           <span className="slider-value-score">{currentScore}</span>
         </div>
       )}

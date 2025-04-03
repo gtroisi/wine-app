@@ -16,6 +16,17 @@ const ResultStep = ({ tastingData, score }) => {
           <span className="score-max">/100</span>
         </div>
       </div>
+
+      <div className="score-verdict">
+        <p>
+          {score >= 97 ? 'Memorabile' :
+          score >= 91 ? 'Eccellente' :
+          score >= 86 ? 'Ottimo' :
+          score >= 78 ? 'Buono' :
+          score >= 70 ? 'Accettabile' :
+          '—'}
+        </p>
+      </div>
       
       <div className="tasting-summary">
         <h3>Riepilogo della Scheda</h3>
@@ -52,17 +63,15 @@ const ResultStep = ({ tastingData, score }) => {
               ).join(', ')}
             </p>
           )}
-          {tastingData?.complexity?.value && (
+          {tastingData?.complexity?.label && (
+          <p>
+            <strong>Complessità:</strong> {tastingData.complexity.label}
+            <span className="score-badge">{tastingData.complexity.score}</span>
+          </p>
+        )}
+          {tastingData?.quality?.label && (
             <p>
-              <strong>Complessità:</strong> {tastingData.complexity.value.charAt(0).toUpperCase() + tastingData.complexity.value.slice(1)} 
-              <span className="score-badge">{tastingData.complexity.score}</span>
-            </p>
-          )}
-          {tastingData?.quality?.value && (
-            <p>
-              <strong>Qualità:</strong> {tastingData.quality.value.includes('piuChe') ? 'Più che ' : ''}
-              {tastingData.quality.value.includes('fine') ? 'Fine' : 
-                tastingData.quality.value.includes('accettabile') ? 'Accettabile' : 'Eccellente'} 
+              <strong>Qualità:</strong> {tastingData.quality.label}
               <span className="score-badge">{tastingData.quality.score}</span>
             </p>
           )}
@@ -70,11 +79,10 @@ const ResultStep = ({ tastingData, score }) => {
           {tastingData?.alcohol && <p><strong>Alcool:</strong> {tastingData.alcohol.charAt(0).toUpperCase() + tastingData.alcohol.slice(1)}</p>}
           {tastingData?.acidity && <p><strong>Acidità:</strong> {tastingData.acidity.charAt(0).toUpperCase() + tastingData.acidity.slice(1)}</p>}
           {tastingData?.tannin && <p><strong>Tannino:</strong> {tastingData.tannin.charAt(0).toUpperCase() + tastingData.tannin.slice(1)}</p>}
-          {tastingData?.balance?.value && (
+          
+          {tastingData?.balance?.label && (
             <p>
-              <strong>Equilibrio:</strong> {tastingData.balance.value.includes('inFaseDi') ? 'In fase di equilibrio' : 
-                tastingData.balance.value.includes('bilanciato') ? 'Bilanciato' : 
-                tastingData.balance.value.includes('equilibrato') ? 'Equilibrato' : 'Squilibrato'} 
+              <strong>Qualità:</strong> {tastingData.balance.label}
               <span className="score-badge">{tastingData.balance.score}</span>
             </p>
           )}

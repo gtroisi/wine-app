@@ -70,7 +70,7 @@ const WineTastingForm = () => {
     // Step 17: Sapidità percepita
     sapidity: '',
     // Step 18: Chiusura di bocca
-    mouthfeel: null,
+    mouthfeel: '',
     // Step 19: Qualità gustativa
     tasteQuality: null,
     // Step 20: Dimensione
@@ -82,7 +82,7 @@ const WineTastingForm = () => {
   // Calcolo del punteggio finale
   const calculateScore = () => {
     // Implementazione del calcolo del punteggio basato sui dati inseriti
-    let score = 0;
+    let score = -5;
     
     // Punteggi per analisi olfattiva con controlli di sicurezza
     if (tastingData?.complexity?.score) score += tastingData.complexity.score;

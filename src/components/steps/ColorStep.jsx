@@ -41,6 +41,7 @@ const ColorStep = ({ wineType, color, updateTastingData }) => {
   return (
     <div className="card">
       <h2>Colore del Vino</h2>
+      
       <div className="option-buttons">
         {colorOptions.map((option) => (
           <button

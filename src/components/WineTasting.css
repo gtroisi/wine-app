@@ -1,3 +1,27 @@
+.wine-bottle-img {
+  width: 80px;  /* Regola questa dimensione in base alle tue esigenze */
+  height: auto;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  border-radius: 20px;
+}
+
+.wine-bottle-img.selected {
+  border-color: #D4AF37;  /* O qualsiasi colore preferisci */
+  background-color: rgba(212, 175, 55, 0.2);
+  border-radius: 40px;
+}
+
+.wine-type-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 8px;
+}
+
 /* Stili per l'app di degustazione vini - Tema Mockup */
 
 .wine-tasting-form {
@@ -463,6 +487,120 @@ input[type="checkbox"]:checked + label {
   cursor: not-allowed;
 }
 
+/* Stili per il ResultStep */
+.result-card {
+  background-color: #3a393b;
+  color: #FAF3E0;
+  padding: 2rem;
+  border-radius: 50px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+}
+
+.score-display {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.score-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #722F37;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.score-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #FAF3E0;
+}
+
+.score-max {
+  font-size: 1rem;
+  color: #FAF3E0;
+  opacity: 0.8;
+}
+
+.tasting-summary {
+  background-color: #2a292b;
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.tasting-summary h3 {
+  color: #f3d3ba;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.summary-section {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(243, 211, 186, 0.3);
+}
+
+.summary-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.summary-section h4 {
+  color: #f3d3ba;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.summary-section p {
+  margin: 0.5rem 0;
+  color: #FAF3E0;
+}
+
+.score-badge {
+  display: inline-block;
+  background-color: #722F37;
+  color: #FAF3E0;
+  border-radius: 12px;
+  padding: 2px 8px;
+  margin-left: 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.print-button,
+.share-button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #722F37;
+  color: #ffffff;
+  border: none;
+  min-width: 120px;
+  text-align: center;
+}
+
+.print-button:hover,
+.share-button:hover {
+  background-color: #5E2730;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .wine-tasting-form {
@@ -506,4 +644,20 @@ input[type="checkbox"]:checked + label {
     width: 100%;
     max-width: 250px;
   }
+  
+  .score-circle {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .score-value {
+    font-size: 2rem;
+  }
+}
+
+.score-verdict p {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #D4AF37;
+  margin-top: 0.5rem;
 }

@@ -1,5 +1,4 @@
 /* Stili per il componente SliderInput */
-
 .slider-container {
   width: 90%;
   margin: 20px auto;
@@ -19,7 +18,7 @@
   color: #FAF3E0;
   font-size: 14px;
   opacity: 0.7;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 
 .slider-label.active {
@@ -31,28 +30,32 @@
 .slider-label-text {
   white-space: nowrap;
   text-align: center;
-  background-color: rgba(47, 79, 79, 0.7);
+  /* Rimuovo lo sfondo verde */
+  background-color: transparent;
   padding: 2px 5px;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  box-shadow: none;
   font-size: 12px;
-  max-width: 100px;
+  /* Modifico il max-width per evitare i puntini di sospensione */
+  max-width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .slider-track {
   width: 100%;
-  height: 10px;
-  border-radius: 5px;
+  height: 20px;
+  border-radius: 20px;
   position: relative;
   margin: 10px 0;
+  /* Aggiungi il gradiente per lo slider da rosa chiaro a bordeaux */
+  background: linear-gradient(to right, #F5C6A5, #722F37);
 }
 
 .slider-input {
   -webkit-appearance: none;
   width: 100%;
-  height: 10px;
+  height: 20px;
   border-radius: 5px;
   background: transparent;
   outline: none;
@@ -66,8 +69,8 @@
 .slider-input::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: #FAF3E0;
   cursor: pointer;
@@ -87,7 +90,7 @@
 
 .slider-value {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 20px;
   font-weight: bold;
   color: #FAF3E0;
 }

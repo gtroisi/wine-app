@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 
 // Componente per la dimensione del vino
 const DimensionStep = ({ dimension, updateTastingData }) => {
@@ -9,6 +10,17 @@ const DimensionStep = ({ dimension, updateTastingData }) => {
     { value: 3, label: 'Distinto', score: 5 },
     { value: 4, label: 'Suggestivo', score: 6 }
   ];
+
+  useEffect(() => {
+    if (!dimension) {
+      const defaultOption = dimensionOptions.find(opt => opt.value === 1);
+      updateTastingData(null, 'dimension', {
+        value: defaultOption.value,
+        score: defaultOption.score,
+        label: defaultOption.label
+      });
+    }
+  }, [dimension]);
 
   // Valore corrente
   const currentValue = dimension ? dimension.value : null;
