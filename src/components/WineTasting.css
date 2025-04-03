@@ -1,0 +1,509 @@
+/* Stili per l'app di degustazione vini - Tema Mockup */
+
+.wine-tasting-form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2F4F4F;
+  background-color: #f3d3ba;
+}
+
+.wine-tasting-form h1.main-title {
+  text-align: center;
+  color: #800020; /* Colore bordeaux */
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  opacity: 0.8;
+}
+
+.wine-tasting-form p {
+  color: #2F4F4F; /* Colore grigio scuro per il testo */
+}
+
+/* Stile per le card */
+.card, .wine-info-card {
+  color: #2F4F4F; /* Colore grigio scuro per il testo */
+  background-color: #3a393b;
+  border-radius: 50px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.wine-info-card {
+  background-color: #393a39;
+  color: #FAF3E0;
+  position: relative;
+  padding: 2.5rem; /* Padding simmetrico aumentato per un aspetto più arioso */
+  margin: 2rem auto 2rem auto; /* Margini orizzontali auto per centrare la card */
+  max-width: 90%; /* Larghezza massima per mantenere la card proporzionata */
+}
+
+.card h2, .wine-info-title {
+  color: #f3d3ba;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: 600;
+  padding: 0 1rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 1000;
+  color: #f3d3ba;
+}
+
+.form-group input,
+.form-group select,
+.wine-input {
+  width: 80%;
+  padding: 1rem;
+  border: 1px solid #FAF3E0;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  transition: border-color 0.3s;
+  background-color: #2a292b;
+  color: #f3d3ba;
+}
+
+.form-group input::placeholder,
+.form-group select::placeholder,
+.wine-input::placeholder {
+  color: rgba(250, 243, 224, 0.6);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.wine-input:focus {
+  border-color: #D4AF37;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
+}
+
+/* Stili per le bottiglie di vino */
+.wine-type-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+  margin: 1.5rem auto;
+  padding: 0 0.5rem;
+}
+
+.wine-type-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border: 2px solid #FAF3E0;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #FAF3E0;
+  min-width: 100px;
+}
+
+.wine-type-button:hover {
+  background-color: rgba(250, 243, 224, 0.1);
+}
+
+.wine-type-button.selected {
+  background-color: rgba(212, 175, 55, 0.2);
+  border-color: #D4AF37;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.wine-type-option label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: 2px solid #444;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+  text-align: center;
+}
+
+/* Stili per i bottoni di opzione */
+.option-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.option-button {
+  background-color: #2a292b;
+  color: #FAF3E0;
+  border: 2px solid #FAF3E0;
+  border-radius: 25px;
+  padding: 0.8rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.option-button:hover {
+  background-color: rgba(250, 243, 224, 0.1);
+  transform: translateY(-2px);
+}
+
+.option-button.selected {
+  background-color: rgba(212, 175, 55, 0.2);
+  border-color: #D4AF37;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.wine-type-option input[type="radio"]:checked + label,
+input[type="checkbox"]:checked + label {
+  border-color: #722F37;
+  background-color: rgba(114, 47, 55, 0.2);
+  box-shadow: 0 2px 8px rgba(114, 47, 55, 0.3);
+}
+
+.wine-bottle {
+  width: 40px;
+  height: 80px;
+  margin-bottom: 0.5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.3s ease;
+}
+
+.wine-type-button:hover .wine-bottle {
+  transform: translateY(-5px);
+}
+
+.rosso-bottle {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23800020" d="M12,2C12,2 8,6 8,12C8,18 12,22 12,22C12,22 16,18 16,12C16,6 12,2 12,2Z"/></svg>');
+}
+
+.bianco-bottle {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23F9E076" d="M12,2C12,2 8,6 8,12C8,18 12,22 12,22C12,22 16,18 16,12C16,6 12,2 12,2Z"/></svg>');
+}
+
+.rosato-bottle {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FF9E9E" d="M12,2C12,2 8,6 8,12C8,18 12,22 12,22C12,22 16,18 16,12C16,6 12,2 12,2Z"/></svg>');
+}
+
+.spumante-bottle {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23F9E076" d="M12,2C12,2 8,6 8,12C8,18 12,22 12,22C12,22 16,18 16,12C16,6 12,2 12,2Z"/><circle fill="%23FFFFFF" cx="10" cy="8" r="1"/><circle fill="%23FFFFFF" cx="14" cy="12" r="1"/><circle fill="%23FFFFFF" cx="11" cy="15" r="1"/></svg>');
+}
+
+/* Stili per i bottoni di navigazione */
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.prev-button,
+.next-button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #722F37;
+  color: #ffffff;
+  border: none;
+  min-width: 120px; /* Larghezza fissa per entrambi i bottoni */
+  text-align: center;
+}
+
+.prev-button:hover,
+.next-button:hover {
+  background-color: #5E2730;
+}
+
+.next-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Stili per le opzioni (radio buttons) */
+.color-options,
+.reflection-options,
+.density-options,
+.clarity-options,
+.brightness-options,
+.perlage-options,
+.complexity-options,
+.quality-options,
+.sugar-options,
+.alcohol-options,
+.acidity-options,
+.tannin-options,
+.balance-options,
+.olfactive-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.color-option,
+.reflection-option,
+.density-option,
+.clarity-option,
+.brightness-option,
+.perlage-option,
+.complexity-option,
+.quality-option,
+.sugar-option,
+.alcohol-option,
+.acidity-option,
+.tannin-option,
+.balance-option,
+.olfactive-option {
+  position: relative;
+}
+
+.color-option input[type="radio"],
+.reflection-option input[type="radio"],
+.density-option input[type="radio"],
+.clarity-option input[type="radio"],
+.brightness-option input[type="radio"],
+.perlage-option input[type="radio"],
+.complexity-option input[type="radio"],
+.quality-option input[type="radio"],
+.sugar-option input[type="radio"],
+.alcohol-option input[type="radio"],
+.acidity-option input[type="radio"],
+.tannin-option input[type="radio"],
+.balance-option input[type="radio"],
+.olfactive-option input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.color-option label,
+.reflection-option label,
+.density-option label,
+.clarity-option label,
+.brightness-option label,
+.perlage-option label,
+.complexity-option label,
+.quality-option label,
+.sugar-option label,
+.alcohol-option label,
+.acidity-option label,
+.tannin-option label,
+.balance-option label,
+.olfactive-option label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+  text-align: center;
+}
+
+input[type="radio"]:checked + label,
+input[type="checkbox"]:checked + label {
+  border-color: #722F37;
+  background-color: rgba(114, 47, 55, 0.05);
+  box-shadow: 0 2px 8px rgba(114, 47, 55, 0.2);
+}
+
+/* Campioni di colore */
+.color-sample,
+.reflection-sample,
+.density-sample,
+.clarity-sample,
+.brightness-sample,
+.perlage-sample {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0 auto 0.8rem auto;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.option-button:hover .color-sample,
+.option-button:hover .reflection-sample,
+.option-button:hover .density-sample,
+.option-button:hover .clarity-sample,
+.option-button:hover .brightness-sample,
+.option-button:hover .perlage-sample {
+  transform: scale(1.2);
+  width: 55px;
+  height: 55px;
+}
+
+/* Colori per i vini bianchi e spumanti */
+.paglierino { background-color: #F9E076; }
+.dorato { background-color: #DAA520; }
+.aranciato { background-color: #FFA500; }
+
+/* Colori per i vini rosati */
+.cerasuolo { background-color: #FF6B6B; }
+.ramato { background-color: #CD7F32; }
+
+/* Colori per i vini rossi */
+.porpora { background-color: #800080; }
+.rubino { background-color: #E0115F; }
+.granato { background-color: #7B1818; }
+
+/* Riflessi */
+.violacei { background: linear-gradient(135deg, #800080, #E0115F); }
+.aranciati { background: linear-gradient(135deg, #FFA500, #FF6347); }
+.verdolini { background: linear-gradient(135deg, #ADFF2F, #32CD32); }
+.dorati { background: linear-gradient(135deg, #FFD700, #DAA520); }
+.ramati { background: linear-gradient(135deg, #CD7F32, #B87333); }
+
+/* Densità */
+.trasparente { background-color: rgba(139, 90, 90, 0.9); }
+.compatto { background-color: rgba(139, 0, 0, 0.9); }
+
+/* Limpidezza */
+.opaco { background-color: #A9A9A9; }
+.limpido { background-color: #F5F5F5; }
+
+/* Vivacità */
+.cupo { background-color: #2F4F4F; }
+.vivace { 
+  background-color: #aaaaaa; 
+  position: relative;
+}
+.vivace::after {
+  content: '★';
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: #FFD700;
+  font-size: 16px;
+}
+.luminoso { 
+  background-color: #e0e0e0; 
+  position: relative;
+}
+.luminoso::after {
+  content: '★★';
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: #FFD700;
+  font-size: 16px;
+}
+
+/* Perlage */
+.fine { 
+  background-image: radial-gradient(circle, white 1px, transparent 1px);
+  background-size: 8px 8px;
+  background-color: #F5F5F5;
+}
+.medio { 
+  background-image: radial-gradient(circle, white 2px, transparent 2px);
+  background-size: 12px 12px;
+  background-color: #F5F5F5;
+}
+.grossolano { 
+  background-image: radial-gradient(circle, white 3px, transparent 3px);
+  background-size: 16px 16px;
+  background-color: #F5F5F5;
+}
+
+/* Stili per i bottoni di navigazione */
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.prev-button,
+.next-button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #722F37;
+  color: #ffffff;
+  border: none;
+  min-width: 120px; /* Larghezza fissa per entrambi i bottoni */
+  text-align: center;
+}
+
+.prev-button:hover,
+.next-button:hover {
+  background-color: #5E2730;
+}
+
+.next-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .wine-tasting-form {
+    padding: 1rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .color-options,
+  .reflection-options,
+  .density-options,
+  .clarity-options,
+  .brightness-options,
+  .perlage-options,
+  .complexity-options,
+  .taste-options,
+  .persistence-options,
+  .sapidity-options,
+  .mouthfeel-options,
+  .dimension-options,
+  .consumption-options {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .color-option label,
+  .reflection-option label,
+  .density-option label,
+  .clarity-option label,
+  .brightness-option label,
+  .perlage-option label,
+  .complexity-option label,
+  .taste-option label,
+  .persistence-option label,
+  .sapidity-option label,
+  .mouthfeel-option label,
+  .dimension-option label,
+  .consumption-option label {
+    width: 100%;
+    max-width: 250px;
+  }
+}
