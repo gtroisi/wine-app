@@ -33,6 +33,9 @@ const SliderInput = ({ value, min, max, onChange, options, showLabels = true }) 
       });
     }
   });
+  
+  // Calcola la larghezza disponibile per ogni etichetta per evitare sovrapposizioni
+  const labelSpacing = 95 / (groupedLabels.length > 1 ? groupedLabels.length - 1 : 1);
 
   // Stile per il track dello slider con gradiente di colore
   const trackStyle = {
@@ -46,10 +49,20 @@ const SliderInput = ({ value, min, max, onChange, options, showLabels = true }) 
     <div className="slider-container">
       {showLabels && (
         <div className="slider-labels">
-          {groupedLabels.map((group) => {
+          {groupedLabels.map((group, index) => {
             // Calcola la posizione media per le etichette raggruppate
             const avgPosition = group.values.reduce((a, b) => a + b, 0) / group.values.length;
-            const positionPercentage = ((avgPosition - min) / (max - min)) * 100;
+            
+            // Distribuisci uniformemente le etichette per evitare sovrapposizioni su mobile
+            // Utilizziamo l'indice per posizionare le etichette in modo uniforme
+            let positionPercentage;
+            if (groupedLabels.length <= 3) {
+              // Se ci sono poche etichette, usa la posizione reale
+              positionPercentage = ((avgPosition - min) / (max - min)) * 100;
+            } else {
+              // Se ci sono molte etichette, distribuiscile uniformemente
+              positionPercentage = index * labelSpacing;
+            }
             
             return (
               <div 

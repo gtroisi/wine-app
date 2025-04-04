@@ -1,5 +1,35 @@
+.brightness-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: #2a292b;
+  border: 2px solid #FAF3E0;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.brightness-box.selected {
+  background-color: rgba(212, 175, 55, 0.2);
+  border-color: #D4AF37;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.brightness-img {
+  width: 60px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.brightness-label {
+  font-size: 1rem;
+  color: #FAF3E0;
+  font-weight: 500;
+}
+
 .wine-bottle-img {
-  width: 80px;  /* Regola questa dimensione in base alle tue esigenze */
+  width: 150px;  /* Dimensione aumentata per una migliore visibilità */
   height: auto;
   cursor: pointer;
   padding: 10px;
@@ -7,6 +37,7 @@
   border: 1px solid transparent;
   transition: all 0.3s ease;
   border-radius: 20px;
+  max-width: 100%;
 }
 
 .wine-bottle-img.selected {
@@ -16,10 +47,11 @@
 }
 
 .wine-type-options {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
   margin-top: 8px;
+  justify-items: center;
 }
 
 /* Stili per l'app di degustazione vini - Tema Mockup */
@@ -239,6 +271,10 @@ input[type="checkbox"]:checked + label {
   justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .prev-button,
@@ -321,6 +357,10 @@ input[type="checkbox"]:checked + label {
   position: absolute;
   opacity: 0;
   cursor: pointer;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .color-option label,
@@ -440,19 +480,29 @@ input[type="checkbox"]:checked + label {
 
 /* Perlage */
 .fine { 
-  background-image: radial-gradient(circle, white 1px, transparent 1px);
-  background-size: 8px 8px;
-  background-color: #F5F5F5;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.9) 1px, transparent 1px),
+                    radial-gradient(circle, rgba(255, 255, 255, 0.7) 0.8px, transparent 0.8px),
+                    radial-gradient(circle, rgba(255, 255, 255, 0.5) 0.6px, transparent 0.6px);
+  background-size: 6px 6px, 8px 8px, 5px 5px;
+  background-position: 0 0, 3px 3px, 5px 5px;
+  background-color: rgba(245, 245, 245, 0.8);
+  border-radius: 50%;
 }
 .medio { 
-  background-image: radial-gradient(circle, white 2px, transparent 2px);
-  background-size: 12px 12px;
-  background-color: #F5F5F5;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.9) 2px, transparent 2px),
+                    radial-gradient(circle, rgba(255, 255, 255, 0.7) 1.5px, transparent 1.5px);
+  background-size: 12px 12px, 15px 15px;
+  background-position: 0 0, 6px 6px;
+  background-color: rgba(245, 245, 245, 0.8);
+  border-radius: 50%;
 }
 .grossolano { 
-  background-image: radial-gradient(circle, white 3px, transparent 3px);
-  background-size: 16px 16px;
-  background-color: #F5F5F5;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.9) 3px, transparent 3px),
+                    radial-gradient(circle, rgba(255, 255, 255, 0.7) 2.5px, transparent 2.5px);
+  background-size: 20px 20px, 25px 25px;
+  background-position: 0 0, 10px 10px;
+  background-color: rgba(245, 245, 245, 0.8);
+  border-radius: 50%;
 }
 
 /* Stili per i bottoni di navigazione */
@@ -461,6 +511,10 @@ input[type="checkbox"]:checked + label {
   justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .prev-button,
@@ -602,13 +656,16 @@ input[type="checkbox"]:checked + label {
 }
 
 /* Responsive design */
+/* Media query per tablet */
 @media (max-width: 768px) {
   .wine-tasting-form {
-    padding: 1rem;
+    padding: 2rem 1rem;
   }
   
-  .card {
+  .card, .wine-info-card {
     padding: 1.5rem;
+    border-radius: 30px;
+    max-width: 95%;
   }
   
   .color-options,
@@ -623,9 +680,16 @@ input[type="checkbox"]:checked + label {
   .sapidity-options,
   .mouthfeel-options,
   .dimension-options,
-  .consumption-options {
+  .consumption-options,
+  .sugar-options,
+  .alcohol-options,
+  .acidity-options,
+  .tannin-options,
+  .balance-options,
+  .olfactive-options {
     flex-direction: column;
     align-items: center;
+    gap: 0.8rem;
   }
   
   .color-option label,
@@ -640,7 +704,13 @@ input[type="checkbox"]:checked + label {
   .sapidity-option label,
   .mouthfeel-option label,
   .dimension-option label,
-  .consumption-option label {
+  .consumption-option label,
+  .sugar-option label,
+  .alcohol-option label,
+  .acidity-option label,
+  .tannin-option label,
+  .balance-option label,
+  .olfactive-option label {
     width: 100%;
     max-width: 250px;
   }
@@ -652,6 +722,409 @@ input[type="checkbox"]:checked + label {
   
   .score-value {
     font-size: 2rem;
+  }
+  
+  .wine-type-options {
+    gap: 0.8rem;
+  }
+  
+  .wine-bottle-img {
+    width: 90px;
+    height: auto;
+  }
+  
+  .wine-type-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    justify-items: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 1rem auto;
+  }
+}
+
+/* Media query per iPhone e dispositivi mobili */
+@media (max-width: 480px) {
+  body {
+    touch-action: manipulation;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* Rimuove l'evidenziazione al tocco */
+    overflow-x: hidden; /* Previene lo scroll orizzontale */
+    user-select: none; /* Previene la selezione del testo non intenzionale */
+  }
+  
+  #root {
+    padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100vw;
+  }
+  
+  .wine-tasting-form {
+    padding: 1rem 0.5rem;
+    max-width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .wine-tasting-form h1.main-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    padding: 0 0.5rem;
+    line-height: 1.3;
+  }
+  
+  .card, .wine-info-card {
+    padding: 1.2rem 0.8rem;
+    border-radius: 20px; /* Ridotto per adattarsi meglio a schermi piccoli */
+    margin: 0.8rem auto;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .card h2, .wine-info-title {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    padding: 0 0.5rem;
+  }
+  
+  .form-group {
+    margin-bottom: 0.8rem;
+    padding: 0 0.5rem;
+  }
+  
+  .form-group label {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .wine-input {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    box-sizing: border-box;
+    height: 44px; /* Altezza minima per target touch */
+    -webkit-appearance: none; /* Rimuove lo stile predefinito su iOS */
+  }
+  
+  /* Ottimizzazione per le opzioni di tipo vino */
+  .wine-type-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    margin: 0.8rem auto;
+    padding: 0;
+    justify-items: center;
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .wine-bottle-img {
+    width: 85px; /* Dimensione aumentata per iPhone */
+    height: auto;
+    padding: 8px;
+  }
+  
+  .wine-type-button {
+    padding: 0.8rem;
+    min-width: 70px;
+    min-height: 44px; /* Altezza minima per target touch */
+    border-radius: 12px;
+  }
+  
+  /* Bottoni di navigazione più grandi e facili da toccare */
+  .prev-button,
+  .next-button,
+  .print-button,
+  .share-button,
+  .option-button {
+    padding: 0.9rem 1.2rem;
+    font-size: 1rem;
+    min-width: 100px;
+    min-height: 44px; /* Altezza minima per target touch */
+    border-radius: 12px;
+    margin: 0.3rem;
+    -webkit-appearance: none; /* Rimuove lo stile predefinito su iOS */
+    touch-action: manipulation;
+  }
+  
+  .navigation-buttons {
+    margin: 1rem auto;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  /* Ottimizzazione per tutte le opzioni */
+  .color-options,
+  .reflection-options,
+  .density-options,
+  .clarity-options,
+  .brightness-options,
+  .perlage-options,
+  .complexity-options,
+  .taste-options,
+  .persistence-options,
+  .sapidity-options,
+  .mouthfeel-options,
+  .dimension-options,
+  .consumption-options,
+  .sugar-options,
+  .alcohol-options,
+  .acidity-options,
+  .tannin-options,
+  .balance-options,
+  .olfactive-options {
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .color-option label,
+  .reflection-option label,
+  .density-option label,
+  .clarity-option label,
+  .brightness-option label,
+  .perlage-option label,
+  .complexity-option label,
+  .taste-option label,
+  .persistence-option label,
+  .sapidity-option label,
+  .mouthfeel-option label,
+  .dimension-option label,
+  .consumption-option label,
+  .sugar-option label,
+  .alcohol-option label,
+  .acidity-option label,
+  .tannin-option label,
+  .balance-option label,
+  .olfactive-option label {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    width: 90%;
+    max-width: 250px;
+    min-height: 44px; /* Altezza minima per target touch */
+    box-sizing: border-box;
+    touch-action: manipulation;
+  }
+  
+  /* Risultati */
+  .score-circle {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .score-value {
+    font-size: 1.8rem;
+  }
+  
+  .score-verdict p {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  /* Campioni di colore più grandi per facilità di tocco */
+  .color-sample,
+  .reflection-sample,
+  .density-sample,
+  .clarity-sample,
+  .brightness-sample,
+  .perlage-sample {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Migliora la spaziatura tra elementi */
+  .option-buttons {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Migliora la leggibilità del testo */
+  p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+}
+
+/* Media query specifica per iPhone X e modelli più recenti con notch */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3),
+       only screen and (min-device-width: 390px) and (max-device-width: 844px) and (-webkit-device-pixel-ratio: 3),
+       only screen and (min-device-width: 428px) and (max-device-width: 932px) and (-webkit-device-pixel-ratio: 3) {
+  .wine-tasting-form {
+    padding-top: 1.5rem; /* Spazio extra per il notch */
+    padding-bottom: 2rem; /* Spazio extra per la barra di navigazione */
+  }
+  
+  /* Ottimizzazione per il safe area su iPhone X e successivi */
+  .navigation-buttons {
+    margin-bottom: 1.5rem;
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+  }
+  
+  /* Migliora la dimensione dei bottoni per il touch */
+  .prev-button,
+  .next-button,
+  .print-button,
+  .share-button,
+  .option-button {
+    min-height: 48px;
+    font-size: 1.05rem;
+  }
+  
+  /* Migliora la dimensione dei campioni di colore */
+  .color-sample,
+  .reflection-sample,
+  .density-sample,
+  .clarity-sample,
+  .brightness-sample,
+  .perlage-sample {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* Media query specifica per iPhone 16 e dispositivi simili */
+@media only screen and (min-device-width: 428px) and (max-device-width: 932px) and (-webkit-device-pixel-ratio: 3) {
+  #root {
+    padding: 0.3rem;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  .wine-tasting-form {
+    padding: 0.8rem 0.3rem;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  
+  .card, .wine-info-card {
+    padding: 1rem 0.6rem;
+    border-radius: 18px;
+    margin: 0.6rem auto;
+    max-width: 95%;
+    box-sizing: border-box;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .wine-input {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* Media query per iPhone in modalità landscape */
+@media only screen and (max-device-width: 926px) and (orientation: landscape) {
+  body {
+    overflow-y: auto;
+  }
+  
+  .wine-tasting-form {
+    padding: 0.8rem 0.5rem;
+    max-width: 100%;
+  }
+  
+  .card, .wine-info-card {
+    padding: 1rem 0.8rem;
+    margin: 0.6rem auto;
+    border-radius: 15px;
+  }
+  
+  .wine-tasting-form h1.main-title {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Ottimizzazione per le opzioni in landscape */
+  .wine-type-options,
+  .option-buttons,
+  .color-options,
+  .reflection-options,
+  .density-options,
+  .clarity-options,
+  .brightness-options,
+  .perlage-options,
+  .complexity-options,
+  .sugar-options,
+  .alcohol-options,
+  .acidity-options,
+  .tannin-options,
+  .balance-options,
+  .olfactive-options {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  /* Ridimensiona le opzioni per adattarle meglio in landscape */
+  .color-option label,
+  .reflection-option label,
+  .density-option label,
+  .clarity-option label,
+  .brightness-option label,
+  .perlage-option label,
+  .complexity-option label,
+  .sugar-option label,
+  .alcohol-option label,
+  .acidity-option label,
+  .tannin-option label,
+  .balance-option label,
+  .olfactive-option label,
+  .option-button {
+    padding: 0.6rem;
+    font-size: 0.85rem;
+    max-width: 150px;
+    min-height: 40px;
+  }
+  
+  /* Ridimensiona i campioni di colore */
+  .color-sample,
+  .reflection-sample,
+  .density-sample,
+  .clarity-sample,
+  .brightness-sample,
+  .perlage-sample {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Ottimizza i bottoni di navigazione */
+  .navigation-buttons {
+    margin-top: 0.8rem;
+    gap: 0.5rem;
+  }
+  
+  .prev-button,
+  .next-button,
+  .print-button,
+  .share-button {
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+    min-width: 90px;
+  }
+  
+  /* Ottimizza il risultato finale */
+  .score-circle {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .score-value {
+    font-size: 1.6rem;
   }
 }
 

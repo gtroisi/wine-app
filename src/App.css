@@ -3,6 +3,18 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  box-sizing: border-box;
+}
+
+/* Assicuriamoci che tutti gli elementi rispettino il box-sizing */
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .logo {

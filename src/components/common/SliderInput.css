@@ -30,14 +30,13 @@
 .slider-label-text {
   white-space: nowrap;
   text-align: center;
-  /* Rimuovo lo sfondo verde */
   background-color: transparent;
-  padding: 2px 5px;
+  padding: 4px 2px;
   border-radius: 10px;
-  box-shadow: none;
-  font-size: 12px;
-  /* Modifico il max-width per evitare i puntini di sospensione */
-  max-width: 150px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  font-size: 9px;
+  max-width: 90px;
+  width: 120%;
   overflow: hidden;
   text-overflow: ellipsis;
 }

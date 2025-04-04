@@ -21,7 +21,7 @@ const ClarityStep = ({ clarity, updateTastingData }) => {
     <div className="card">
       <h2>Limpidezza del Vino</h2>
       
-      <div className="clarity-options">
+      <div className="option-buttons">
         {clarityOptions.map((option) => (
           <button
             key={option.value}

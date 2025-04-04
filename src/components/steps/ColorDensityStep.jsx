@@ -21,7 +21,7 @@ const ColorDensityStep = ({ colorDensity, updateTastingData }) => {
     <div className="card">
       <h2>Densità Cromatica</h2>
       
-      <div className="density-options">
+      <div className="option-buttons">
         {densityOptions.map((option) => (
           <button
             key={option.value}

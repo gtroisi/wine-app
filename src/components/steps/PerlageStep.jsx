@@ -4,6 +4,11 @@ import React from 'react';
 const PerlageStep = ({ perlage, updateTastingData }) => {
   const handleChange = (value) => {
     updateTastingData(null, 'perlage', value);
+    
+    // Naviga automaticamente alla pagina successiva dopo la selezione
+    setTimeout(() => {
+      if (window.nextStep) window.nextStep();
+    }, 300);
   };
 
   // Opzioni per il perlage
@@ -15,25 +20,18 @@ const PerlageStep = ({ perlage, updateTastingData }) => {
 
   return (
     <div className="card">
-      <h2>Perlage (Grana delle Bollicine)</h2>
-      <p className="info-text">Questo parametro si valuta solo per i vini spumanti</p>
+      <h2>Perlage</h2>
       
-      <div className="perlage-options">
+      <div className="option-buttons">
         {perlageOptions.map((option) => (
-          <div className="perlage-option" key={option.value}>
-            <input
-              type="radio"
-              id={`perlage-${option.value}`}
-              name="wine-perlage"
-              value={option.value}
-              checked={perlage === option.value}
-              onChange={() => handleChange(option.value)}
-            />
-            <label htmlFor={`perlage-${option.value}`}>
-              <div className={`perlage-sample ${option.value}`}></div>
-              {option.label}
-            </label>
-          </div>
+          <button
+            key={option.value}
+            className={`option-button ${perlage === option.value ? 'selected' : ''}`}
+            onClick={() => handleChange(option.value)}
+          >
+            <div className={`perlage-sample ${option.value}`}></div>
+            {option.label}
+          </button>
         ))}
       </div>
     </div>

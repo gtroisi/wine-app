@@ -312,6 +312,9 @@ const WineTastingForm = () => {
 
   // Verifica se possiamo procedere allo step successivo
   const canProceed = () => {
+    // Ottieni la chiave dello step corrente
+    const currentStepKey = steps[currentStep]?.key;
+    
     switch (currentStep) {
       case 0: // WineInfo
         return tastingData.wineInfo.name && 
@@ -326,9 +329,47 @@ const WineTastingForm = () => {
       // Verifica se siamo all'ultimo step (Consumption) e se è stato selezionato un valore
       case steps.length - 2: // ConsumptionStep (penultimo step)
         return tastingData.consumption !== '';
-      // Per gli altri step, controlla in base al tipo di vino
+      // Per gli altri step, controlla in base al tipo di step
       default:
-        return true;
+        // Verifica in base alla chiave dello step
+        switch (currentStepKey) {
+          case 'color-density':
+            return tastingData.colorDensity !== '';
+          case 'clarity':
+            return tastingData.clarity !== '';
+          case 'brightness':
+            return tastingData.brightness !== '';
+          case 'sugar':
+            return tastingData.sugar !== '';
+          case 'acidity':
+            return tastingData.acidity !== '';
+          case 'alcohol':
+            return tastingData.alcohol !== '';
+          case 'tannin':
+            return tastingData.tannin !== '';
+          case 'sapidity':
+            return tastingData.sapidity !== '';
+          case 'mouthfeel':
+            return tastingData.mouthfeel && tastingData.mouthfeel.value ? true : false;
+          case 'perlage':
+            return tastingData.perlage !== '';
+          case 'olfactive':
+            return tastingData.olfactiveNotes && tastingData.olfactiveNotes.length > 0;
+          case 'complexity':
+            return tastingData.complexity !== null;
+          case 'quality':
+            return tastingData.quality !== null;
+          case 'balance':
+            return tastingData.balance !== null;
+          case 'persistence':
+            return tastingData.persistence !== null;
+          case 'taste-quality':
+            return tastingData.tasteQuality !== null;
+          case 'dimension':
+            return tastingData.dimension !== null;
+          default:
+            return false; // Per default, richiedi sempre una selezione
+        }
     }
   };
 
