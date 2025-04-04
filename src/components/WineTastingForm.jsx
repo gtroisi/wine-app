@@ -82,7 +82,7 @@ const WineTastingForm = () => {
   // Calcolo del punteggio finale
   const calculateScore = () => {
     // Implementazione del calcolo del punteggio basato sui dati inseriti
-    let score = -5;
+    let score = 0;
     
     // Punteggi per analisi olfattiva con controlli di sicurezza
     if (tastingData?.complexity?.score) score += tastingData.complexity.score;
