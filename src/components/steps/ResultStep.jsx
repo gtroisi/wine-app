@@ -1,11 +1,40 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useAuth } from '../../contexts/AuthContext';
 
 // Componente per il risultato finale e il punteggio
 const ResultStep = ({ tastingData, score }) => {
+  const { user, saveWineData } = useAuth();
+  const [saving, setSaving] = useState(false);
+  const [saveMessage, setSaveMessage] = useState(null);
+  
   // Verifica che i dati siano disponibili
   useEffect(() => {
     console.log('ResultStep renderizzato con dati:', tastingData);
   }, [tastingData]);
+  
+  // Funzione per salvare i dati del vino
+  const handleSaveData = async () => {
+    setSaving(true);
+    setSaveMessage(null);
+    
+    try {
+      const { error } = await saveWineData({
+        ...tastingData,
+        score,
+        saved_at: new Date().toISOString()
+      });
+      
+      if (error) {
+        throw error;
+      }
+      
+      setSaveMessage({ type: 'success', text: 'Dati salvati con successo!' });
+    } catch (error) {
+      setSaveMessage({ type: 'error', text: `Errore: ${error.message || 'Si è verificato un errore'}` });
+    } finally {
+      setSaving(false);
+    }
+  };
   return (
     <div className="card result-card">
       <h2>Risultato della Degustazione</h2>
@@ -95,8 +124,23 @@ const ResultStep = ({ tastingData, score }) => {
         </div>
       </div>
       
+      {saveMessage && (
+        <div className={`save-message ${saveMessage.type}`}>
+          {saveMessage.text}
+        </div>
+      )}
+      
       <div className="actions">
         <button className="print-button" onClick={() => window.print()}>Stampa Scheda</button>
+        {user && (
+          <button 
+            className="save-button" 
+            onClick={handleSaveData} 
+            disabled={saving}
+          >
+            {saving ? 'Salvataggio...' : 'Salva Scheda'}
+          </button>
+        )}
         <button className="share-button" onClick={() => alert('Funzionalità di condivisione in arrivo!')}>Condividi</button>
       </div>
     </div>

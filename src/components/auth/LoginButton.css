@@ -1,0 +1,38 @@
+/* Stili per il bottone di login/logout */
+.login-button-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000; /* Assicura che il bottone sia sempre visibile sopra altri elementi */
+}
+
+.login-logout-button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.login-logout-button.login {
+  background-color: #722F37;
+  color: white;
+}
+
+.login-logout-button.login:hover {
+  background-color: #5a252c;
+}
+
+.login-logout-button.logout {
+  background-color: transparent;
+  border: 1px solid #722F37;
+  color: #722F37;
+}
+
+.login-logout-button.logout:hover {
+  background-color: #722F37;
+  color: white;
+}
