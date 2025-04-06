@@ -4,12 +4,14 @@
   margin: 0 auto;
   padding: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #800020;
+  background-color: #f3d3ba;
 }
 
 .wine-list-container h1 {
   text-align: center;
   margin-bottom: 30px;
-  color: #722F37;
+  color: #800020;
 }
 
 .loading-message,
@@ -90,8 +92,15 @@
   text-align: center;
 }
 
-/* Stili per il pulsante di visualizzazione dettagli */
-.view-details-button {
+/* Stili per i pulsanti di azione */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.view-details-button,
+.delete-wine-button {
   background: none;
   border: none;
   color: #722F37;
@@ -104,13 +113,19 @@
   transition: background-color 0.2s;
 }
 
-.view-details-button:hover {
+.view-details-button:hover,
+.delete-wine-button:hover {
   background-color: rgba(114, 47, 55, 0.1);
 }
 
-.view-details-button svg {
+.view-details-button svg,
+.delete-wine-button svg {
   width: 20px;
   height: 20px;
+}
+
+.delete-wine-button {
+  color: #a52a2a; /* Colore bordeaux più intenso per il cestino */
 }
 
 /* Stili per il modale dei dettagli */

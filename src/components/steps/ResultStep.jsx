@@ -131,7 +131,6 @@ const ResultStep = ({ tastingData, score }) => {
       )}
       
       <div className="actions">
-        <button className="print-button" onClick={() => window.print()}>Stampa Scheda</button>
         {user && (
           <button 
             className="save-button" 
@@ -141,7 +140,6 @@ const ResultStep = ({ tastingData, score }) => {
             {saving ? 'Salvataggio...' : 'Salva Scheda'}
           </button>
         )}
-        <button className="share-button" onClick={() => alert('Funzionalità di condivisione in arrivo!')}>Condividi</button>
       </div>
     </div>
   );

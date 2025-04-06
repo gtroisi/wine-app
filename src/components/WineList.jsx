@@ -13,6 +13,7 @@ const WineList = () => {
   const [sortField, setSortField] = useState('saved_at');
   const [sortDirection, setSortDirection] = useState('desc');
   const [selectedWine, setSelectedWine] = useState(null);
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
   // Reindirizza l'utente alla pagina di login se non è autenticato
   useEffect(() => {
@@ -94,6 +95,40 @@ const WineList = () => {
     setSelectedWine(null);
   };
 
+  // Gestisce l'eliminazione di un vino
+  const handleDeleteWine = async (wineId) => {
+    // Chiedi conferma all'utente prima di eliminare
+    if (!window.confirm('Sei sicuro di voler eliminare questo vino? Questa azione non può essere annullata.')) {
+      return;
+    }
+
+    try {
+      setDeleteLoading(true);
+      
+      // Elimina il vino dal database
+      const { error } = await supabase
+        .from('wine_tastings')
+        .delete()
+        .eq('id', wineId)
+        .eq('user_id', user.id); // Assicurati che l'utente possa eliminare solo i propri vini
+
+      if (error) throw error;
+
+      // Aggiorna lo stato locale rimuovendo il vino eliminato
+      setWines(wines.filter(wine => wine.id !== wineId));
+      
+      // Se il vino eliminato è quello attualmente visualizzato nei dettagli, chiudi il modale
+      if (selectedWine && selectedWine.id === wineId) {
+        setSelectedWine(null);
+      }
+    } catch (err) {
+      console.error('Errore nell\'eliminazione del vino:', err);
+      alert('Si è verificato un errore durante l\'eliminazione del vino. Riprova più tardi.');
+    } finally {
+      setDeleteLoading(false);
+    }
+  };
+
   // Formatta la data in formato leggibile
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -162,16 +197,28 @@ const WineList = () => {
                   </td>
                   <td>{wine.saved_at ? formatDate(wine.saved_at) : 'N/D'}</td>
                   <td>
-                    <button 
-                      className="view-details-button" 
-                      onClick={() => handleViewDetails(wine)}
-                      aria-label="Visualizza dettagli"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                      </svg>
-                    </button>
+                    <div className="action-buttons">
+                      <button 
+                        className="view-details-button" 
+                        onClick={() => handleViewDetails(wine)}
+                        aria-label="Visualizza dettagli"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="11" cy="11" r="8"></circle>
+                          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                      </button>
+                      <button 
+                        className="delete-wine-button" 
+                        onClick={() => handleDeleteWine(wine.id)}
+                        aria-label="Elimina vino"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="3 6 5 6 21 6"></polyline>
+                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
