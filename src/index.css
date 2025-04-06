@@ -3,9 +3,9 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #121212;
+  color-scheme: light dark;
+  color: #2F4F4F;
+  background-color: #FAF3E0;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -32,6 +32,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #FAF3E0;
   color: #2F4F4F;
+  min-height: 100vh;
 }
 
 h1 {
@@ -58,4 +59,19 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Rimosso il media query per il tema chiaro per mantenere sempre il tema scuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #121212;
+  }
+  body {
+    background-color: #121212;
+    color: rgba(255, 255, 255, 0.87);
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #1a1a1a;
+  }
+}
