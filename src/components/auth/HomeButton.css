@@ -1,0 +1,37 @@
+/* Stili per il pulsante home */
+.home-icon-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #722F37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.home-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.home-icon:hover {
+  background-color: #5a252c;
+  transform: scale(1.05);
+}

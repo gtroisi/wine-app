@@ -5,6 +5,7 @@ import './components/WineTasting.css'
 import { AuthProvider } from './contexts/AuthContext'
 import AuthPage from './components/auth/AuthPage'
 import UserIconButton from './components/auth/UserIconButton'
+import HomeButton from './components/auth/HomeButton'
 import WineList from './components/WineList'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
@@ -19,6 +20,7 @@ function App() {
             <Route path="/lista-vini" element={<WineList />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
+          <HomeButton />
           <UserIconButton />
         </div>
       </AuthProvider>

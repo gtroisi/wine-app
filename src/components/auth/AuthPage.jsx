@@ -33,7 +33,7 @@ const AuthPage = () => {
   return (
     <div className="auth-page-container">
       <div className="auth-page-content">
-        <h1 className="auth-page-title">Wine Tasting App</h1>
+        <h1 className="auth-page-title">Wine Tasting</h1>
         {user ? (
           <UserProfile />
         ) : (
