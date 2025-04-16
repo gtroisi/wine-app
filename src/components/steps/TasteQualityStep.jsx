@@ -6,13 +6,13 @@ import { useEffect } from 'react';
 const TasteQualityStep = ({ tasteQuality, updateTastingData }) => {
   // Opzioni per la qualità gustativa con punteggi associati
   const qualityOptions = [
-    { value: 1, label: 'Accettabile', score: 18 },
-    { value: 2, label: 'Accettabile', score: 19 },
-    { value: 3, label: 'Fine', score: 20 },
-    { value: 4, label: 'Fine', score: 21 },
-    { value: 5, label: 'Più che fine', score: 22 },
-    { value: 6, label: 'Più che fine', score: 23 },
-    { value: 7, label: 'Eccellente', score: 24 }
+    { value: 1, label: 'Accettabile', score: 14 },
+    { value: 2, label: 'Accettabile', score: 15 },
+    { value: 3, label: 'Fine', score: 16 },
+    { value: 4, label: 'Fine', score: 17 },
+    { value: 5, label: 'Più che fine', score: 18 },
+    { value: 6, label: 'Più che fine', score: 19 },
+    { value: 7, label: 'Eccellente', score: 20 }
   ];
 
   useEffect(() => {

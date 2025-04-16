@@ -7,7 +7,7 @@ const HomeButton = () => {
 
   const handleClick = () => {
     // Naviga alla pagina principale
-    navigate('/tasting');
+    navigate('/');
   };
 
   return (

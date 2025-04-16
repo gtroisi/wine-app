@@ -1,5 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
+import './ResultStep.css';
+
+// Opzioni per i vari parametri di degustazione
+const sugarOptions = [
+  { value: 'secco', label: 'Secco' },
+  { value: 'tendenteAlDolce', label: 'Tendente al dolce' },
+  { value: 'dolce', label: 'Dolce' },
+  { value: 'moltoDolce', label: 'Molto dolce' }
+];
+
+// Opzioni per la sapidità percepita
+const sapidityOptions = [
+  { value: 'nonAvvertibile', label: 'Non avvertibile' },
+  { value: 'contenuto', label: 'Contenuto' },
+  { value: 'sapido', label: 'Sapido' },
+  { value: 'piuCheSapido', label: 'Più che sapido' }
+];
+
+const alcoholOptions = [
+  { value: 'contenuto', label: 'Contenuto' },
+  { value: 'caldo', label: 'Caldo' },
+  { value: 'piuCheCaldo', label: 'Più che caldo' },
+  { value: 'moltoCaldo', label: 'Molto caldo' }
+];
+
+const acidityOptions = [
+  { value: 'contenuto', label: 'Contenuto' },
+  { value: 'fresco', label: 'Fresco' },
+  { value: 'piuCheFresco', label: 'Più che fresco' },
+  { value: 'moltoFresco', label: 'Molto fresco' }
+];
+
+const tanninOptions = [
+  { value: 'amaro', label: 'Amaro' },
+  { value: 'vegetale', label: 'Vegetale' },
+  { value: 'maturo', label: 'Maturo' },
+  { value: 'raffinato', label: 'Raffinato' }
+];
 
 // Componente per il risultato finale e il punteggio
 const ResultStep = ({ tastingData, score }) => {
@@ -87,38 +125,69 @@ const ResultStep = ({ tastingData, score }) => {
           <h4>Caratteristiche Olfattive e Gustative</h4>
           {tastingData?.olfactiveNotes && tastingData.olfactiveNotes.length > 0 && (
             <p>
-              <strong>Analisi Olfattiva:</strong> {tastingData.olfactiveNotes.map(note => 
+              <strong>Sentori:</strong> {tastingData.olfactiveNotes.map(note => 
                 note.charAt(0).toUpperCase() + note.slice(1)
               ).join(', ')}
             </p>
           )}
           {tastingData?.complexity?.label && (
-          <p>
-            <strong>Complessità:</strong> {tastingData.complexity.label}
-            <span className="score-badge">{tastingData.complexity.score}</span>
+          <p className="score-item">
+            <strong>Complessità:</strong>
+            <span className="label-score">
+              <span className="label-text">{tastingData.complexity.label}</span>
+              <span className="score-badge">{tastingData.complexity.score}</span>
+            </span>
           </p>
         )}
           {tastingData?.quality?.label && (
-            <p>
-              <strong>Qualità:</strong> {tastingData.quality.label}
-              <span className="score-badge">{tastingData.quality.score}</span>
+            <p className="score-item">
+              <strong>Qualità Olfattiva:</strong>
+              <span className="label-score">
+                <span className="label-text">{tastingData.quality.label}</span>
+                <span className="score-badge">{tastingData.quality.score}</span>
+              </span>
             </p>
           )}
-          {tastingData?.sugar && <p><strong>Zucchero:</strong> {tastingData.sugar.charAt(0).toUpperCase() + tastingData.sugar.slice(1)}</p>}
-          {tastingData?.alcohol && <p><strong>Alcool:</strong> {tastingData.alcohol.charAt(0).toUpperCase() + tastingData.alcohol.slice(1)}</p>}
-          {tastingData?.acidity && <p><strong>Acidità:</strong> {tastingData.acidity.charAt(0).toUpperCase() + tastingData.acidity.slice(1)}</p>}
-          {tastingData?.tannin && <p><strong>Tannino:</strong> {tastingData.tannin.charAt(0).toUpperCase() + tastingData.tannin.slice(1)}</p>}
+          {tastingData?.sugar && <p><strong>Zucchero:</strong> {sugarOptions.find(opt => opt.value === tastingData.sugar)?.label || tastingData.sugar}</p>}
+          {tastingData?.sapidity && <p><strong>Sapidità:</strong> {sapidityOptions.find(opt => opt.value === tastingData.sapidity)?.label || tastingData.sapidity}</p>}
+          {tastingData?.alcohol && <p><strong>Alcool:</strong> {alcoholOptions.find(opt => opt.value === tastingData.alcohol)?.label || tastingData.alcohol}</p>}
+          {tastingData?.acidity && <p><strong>Acidità:</strong> {acidityOptions.find(opt => opt.value === tastingData.acidity)?.label || tastingData.acidity}</p>}
+          {tastingData?.tannin && <p><strong>Tannino:</strong> {tanninOptions.find(opt => opt.value === tastingData.tannin)?.label || tastingData.tannin}</p>}
           
           {tastingData?.balance?.label && (
-            <p>
-              <strong>Qualità:</strong> {tastingData.balance.label}
-              <span className="score-badge">{tastingData.balance.score}</span>
+            <p className="score-item">
+              <strong>Equilibrio:</strong>
+              <span className="label-score">
+                <span className="label-text">{tastingData.balance.label}</span>
+                <span className="score-badge">{tastingData.balance.score}</span>
+              </span>
+            </p>
+          )}
+          {tastingData?.balance?.label && (
+            <p className="score-item">
+              <strong>Persistenza:</strong>
+              <span className="label-score">
+                <span className="label-text">{tastingData.persistence.label}</span>
+                <span className="score-badge">{tastingData.persistence.score}</span>
+              </span>
             </p>
           )}
           {tastingData?.tasteQuality?.label && (
-            <p>
-              <strong>Qualità Gustativa:</strong> {tastingData.tasteQuality.label}
-              <span className="score-badge">{tastingData.tasteQuality.score}</span>
+            <p className="score-item">
+              <strong>Qualità Gustativa:</strong>
+              <span className="label-score">
+                <span className="label-text">{tastingData.tasteQuality.label}</span>
+                <span className="score-badge">{tastingData.tasteQuality.score}</span>
+              </span>
+            </p>
+          )}
+          {tastingData?.tasteQuality?.label && (
+            <p className="score-item">
+              <strong>Dimensione:</strong>
+              <span className="label-score">
+                <span className="label-text">{tastingData.dimension.label}</span>
+                <span className="score-badge">{tastingData.dimension.score}</span>
+              </span>
             </p>
           )}
         </div>

@@ -212,12 +212,6 @@ const WineTastingForm = () => {
         acidity={tastingData.acidity} 
         updateTastingData={updateTastingData} 
       />,
-      // Step 14: Tannino
-      <TanninStep 
-        key="tannin" 
-        tannin={tastingData.tannin} 
-        updateTastingData={updateTastingData} 
-      />,
       // Step 15: Equilibrio
       <BalanceStep 
         key="balance" 
@@ -277,6 +271,15 @@ const WineTastingForm = () => {
         <ColorDensityStep 
           key="color-density" 
           colorDensity={tastingData.colorDensity} 
+          updateTastingData={updateTastingData} 
+        />
+      );
+      
+      // Inserisci il tannino dopo l'acidità solo per i vini rossi
+      customSteps.splice(13, 0, 
+        <TanninStep 
+          key="tannin" 
+          tannin={tastingData.tannin} 
           updateTastingData={updateTastingData} 
         />
       );

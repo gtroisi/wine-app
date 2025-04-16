@@ -188,15 +188,15 @@ const WineList = () => {
             <tbody>
               {wines.map((wine) => (
                 <tr key={wine.id}>
-                  <td>{wine.wineInfo?.name || 'N/D'}</td>
-                  <td>{wine.wineInfo?.winery || 'N/D'}</td>
-                  <td className="score-cell">
+                  <td data-label="Nome">{wine.wineInfo?.name || 'N/D'}</td>
+                  <td data-label="Cantina">{wine.wineInfo?.winery || 'N/D'}</td>
+                  <td className="score-cell" data-label="Punteggio">
                     <div className="score-pill">
                       {wine.score || 'N/D'}
                     </div>
                   </td>
-                  <td>{wine.saved_at ? formatDate(wine.saved_at) : 'N/D'}</td>
-                  <td>
+                  <td data-label="Data">{wine.saved_at ? formatDate(wine.saved_at) : 'N/D'}</td>
+                  <td data-label="Azioni">
                     <div className="action-buttons">
                       <button 
                         className="view-details-button" 
@@ -280,40 +280,72 @@ const WineList = () => {
               
               <div className="summary-section">
                 <h4>Caratteristiche Olfattive e Gustative</h4>
+
                 {selectedWine?.olfactiveNotes && selectedWine.olfactiveNotes.length > 0 && (
                   <p>
-                    <strong>Analisi Olfattiva:</strong> {selectedWine.olfactiveNotes.map(note => 
+                    <strong>Sentori:</strong> {selectedWine.olfactiveNotes.map(note => 
                       note.charAt(0).toUpperCase() + note.slice(1)
                     ).join(', ')}
                   </p>
                 )}
                 {selectedWine?.complexity?.label && (
-                <p>
-                  <strong>Complessità:</strong> {selectedWine.complexity.label}
-                  <span className="score-badge">{selectedWine.complexity.score}</span>
-                </p>
-              )}
+                  <p className="score-item">
+                    <strong>Complessità:</strong>
+                    <span className="label-score">
+                      <span className="label-text">{selectedWine.complexity.label}</span>
+                      <span className="score-badge">{selectedWine.complexity.score}</span>
+                    </span>
+                  </p>
+                )}
                 {selectedWine?.quality?.label && (
-                  <p>
-                    <strong>Qualità:</strong> {selectedWine.quality.label}
-                    <span className="score-badge">{selectedWine.quality.score}</span>
+                  <p className="score-item">
+                    <strong>Qualità Olfattiva:</strong>
+                    <span className="label-score">
+                      <span className="label-text">{selectedWine.quality.label}</span>
+                      <span className="score-badge">{selectedWine.quality.score}</span>
+                    </span>
                   </p>
                 )}
                 {selectedWine?.sugar && <p><strong>Zucchero:</strong> {selectedWine.sugar.charAt(0).toUpperCase() + selectedWine.sugar.slice(1)}</p>}
+                {selectedWine?.sapidity && <p><strong>Sapidità:</strong> {selectedWine.sapidity.charAt(0).toUpperCase() + selectedWine.sapidity.slice(1)}</p>}
                 {selectedWine?.alcohol && <p><strong>Alcool:</strong> {selectedWine.alcohol.charAt(0).toUpperCase() + selectedWine.alcohol.slice(1)}</p>}
                 {selectedWine?.acidity && <p><strong>Acidità:</strong> {selectedWine.acidity.charAt(0).toUpperCase() + selectedWine.acidity.slice(1)}</p>}
                 {selectedWine?.tannin && <p><strong>Tannino:</strong> {selectedWine.tannin.charAt(0).toUpperCase() + selectedWine.tannin.slice(1)}</p>}
                 
                 {selectedWine?.balance?.label && (
-                  <p>
-                    <strong>Qualità:</strong> {selectedWine.balance.label}
-                    <span className="score-badge">{selectedWine.balance.score}</span>
+                  <p className="score-item">
+                    <strong>Equilibrio:</strong>
+                    <span className="label-score">
+                      <span className="label-text">{selectedWine.balance.label}</span>
+                      <span className="score-badge">{selectedWine.balance.score}</span>
+                    </span>
+                  </p>
+                )}
+                {selectedWine?.persistence?.label && (
+                  <p className="score-item">
+                    <strong>Persistenza:</strong>
+                    <span className="label-score">
+                      <span className="label-text">{selectedWine.persistence.label}</span>
+                      <span className="score-badge">{selectedWine.persistence.score}</span>
+                    </span>
                   </p>
                 )}
                 {selectedWine?.tasteQuality?.label && (
-                  <p>
-                    <strong>Qualità Gustativa:</strong> {selectedWine.tasteQuality.label}
-                    <span className="score-badge">{selectedWine.tasteQuality.score}</span>
+                  <p className="score-item">
+                    <strong>Qualità Gustativa:</strong>
+                    <span className="label-score">
+                      <span className="label-text">{selectedWine.tasteQuality.label}</span>
+                      <span className="score-badge">{selectedWine.tasteQuality.score}</span>
+                    </span>
+                  </p>
+                )}
+                {selectedWine?.dimension?.label && (
+                  <p className="score-item">
+                    <strong>Dimensione:</strong>
+                    <span className="label-score">
+                      <span className="label-text">{selectedWine.dimension.label}</span>
+                      <span className="score-badge">{selectedWine.dimension.score}</span>
+                    </span>
                   </p>
                 )}
               </div>

@@ -20,22 +20,26 @@ const ReflectionStep = ({ reflection, updateTastingData }) => {
       case 'rosso':
         return [
           { value: 'violacei', label: 'Violacei' },
-          { value: 'aranciati', label: 'Aranciati' }
+          { value: 'aranciati', label: 'Aranciati' },
+          { value: 'nessuno', label: 'Nessun riflesso' }
         ];
       case 'bianco':
         return [
           { value: 'verdolini', label: 'Verdolini' },
-          { value: 'dorati', label: 'Dorati' }
+          { value: 'dorati', label: 'Dorati' },
+          { value: 'nessuno', label: 'Nessun riflesso' }
         ];
       case 'rosato':
         return [
           { value: 'ramati', label: 'Ramati' },
-          { value: 'aranciati', label: 'Aranciati' }
+          { value: 'aranciati', label: 'Aranciati' },
+          { value: 'nessuno', label: 'Nessun riflesso' }
         ];
       case 'spumante':
         return [
           { value: 'verdolini', label: 'Verdolini' },
-          { value: 'dorati', label: 'Dorati' }
+          { value: 'dorati', label: 'Dorati' },
+          { value: 'nessuno', label: 'Nessun riflesso' }
         ];
       default:
         return [
@@ -43,7 +47,8 @@ const ReflectionStep = ({ reflection, updateTastingData }) => {
           { value: 'aranciati', label: 'Aranciati' },
           { value: 'verdolini', label: 'Verdolini' },
           { value: 'dorati', label: 'Dorati' },
-          { value: 'ramati', label: 'Ramati' }
+          { value: 'ramati', label: 'Ramati' },
+          { value: 'nessuno', label: 'Nessun riflesso' }
         ];
     }
   };
